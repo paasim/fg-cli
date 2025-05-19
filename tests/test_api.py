@@ -40,7 +40,7 @@ def test_dataset():
     # in practice the dataset might change
     assert dataset.name == "Imbalance price"
     assert dataset.unit == "1 €/MWh"
-    assert dataset.data_period == "1 h"
+    assert dataset.data_period == "15 min"
     assert "json" in dataset.available_formats
 
 
@@ -52,7 +52,7 @@ def test_dataset_in_finnish():
     # in practice the dataset might change
     assert dataset.name == "Tasepoikkeaman hinta"
     assert dataset.unit == "1 €/MWh"
-    assert dataset.data_period == "1 h"
+    assert dataset.data_period == "15 min"
     assert "json" in dataset.available_formats
 
 
