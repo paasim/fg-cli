@@ -1,8 +1,8 @@
-# `fg_cli`
+# `fg-cli`
 
-[![build](https://github.com/paasim/fg_cli/workflows/build/badge.svg)](https://github.com/paasim/fg_cli/actions)
+[![build](https://github.com/paasim/fg-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/paasim/fg-cli/actions/workflows/ci.yml)
 
-`fg_cli` - Client for [fingrid open data api](https://developer-data.fingrid.fi/).
+`fg-cli` - Client for [fingrid open data api](https://developer-data.fingrid.fi/).
 
 ## usage
 

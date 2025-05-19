@@ -1,16 +1,11 @@
 [project]
 name = "fg_cli"
-version = "0.1.0"
+version = "0.1.1"
 requires-python = ">=3.12"
-dependencies = [ "requests>2.30" ]
+dependencies = [ "requests>=2" ]
 
-[tool.uv]
-dev-dependencies = [
-  "deptry",
-  "pyright",
-  "pytest",
-  "ruff",
-]
+[dependency-groups]
+dev = ["deptry", "pyright", "pytest", "ruff"]
 
 [tool.pytest.ini_options]
 pythonpath = "."
@@ -20,8 +15,8 @@ pythonpath = "."
 line-length = 88
 indent-width = 4
 
-# Assume Python 3.12
-target-version = "py312"
+# Assume Python 3.13
+target-version = "py313"
 
 # All rules: https://beta.ruff.rs/docs/rules/
 [tool.ruff.lint]
@@ -34,8 +29,8 @@ ignore = [
 exclude = ["tests"]
 
 [tool.ruff.lint.per-file-ignores]
-"__init__.py" = ["E402"]
-"**/tests/*" = ["S101", "INP001", "ANN201", "PT011"]
+"__init__.py" = ["PLC0414"] # init-files can re-export, dont need docs
+"**/tests/*" = ["S101", "INP001", "ANN201", "PT011", "PLR2004"]
 
 [tool.ruff.format]
 # Like Black, use double quotes for strings.

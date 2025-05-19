@@ -89,7 +89,7 @@ def test_get_obs():
     # in practice this might change
     assert len(obs) == max_results
     assert obs[0].start_time == datetime(2014, 1, 1, tzinfo=UTC)
-    assert obs[0].value == 7676  # noqa: PLR2004
+    assert obs[0].value == 7676
 
 
 def test_get_obs_start_time():
@@ -101,4 +101,4 @@ def test_get_obs_start_time():
     # in practice this might change
     assert len(obs) == max_results
     assert obs[0].start_time == dt
-    assert obs[0].value == 9144.5  # noqa: PLR2004
+    assert obs[0].value == 9144.5
