@@ -1,21 +1,32 @@
 from time import sleep
 
 from requests import get
+from requests.exceptions import Timeout
 
 URL = "https://data.fingrid.fi/api"
 TIMEOUT = 20
 MAX_PAGE_SIZE = 20000
 
 
-def get_json(url_path: str, params: dict, api_key: None | str) -> dict:
+def get_json(
+    url_path: str, params: dict, api_key: None | str, max_retries: int = 2
+) -> dict:
     """get query with params to url_path, return resulting json as dict"""
     if api_key is None:
         raise ValueError("api_key missing")  # noqa: TRY003, EM101
     headers = {"x-api-key": api_key}
     url = f"{URL}/{url_path}"
-    resp = get(url, params=params, headers=headers, timeout=TIMEOUT)
-    resp.raise_for_status()
-    return resp.json()
+    tries = 0
+    while True:
+        try:
+            resp = get(url, params=params, headers=headers, timeout=TIMEOUT)
+            resp.raise_for_status()
+            return resp.json()
+        except Timeout:
+            if tries >= max_retries:
+                raise
+            sleep(1)
+            tries += 1
 
 
 def get_paginated(
