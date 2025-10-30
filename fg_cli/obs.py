@@ -1,4 +1,5 @@
 import os
+from collections.abc import Iterator
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Self
@@ -26,6 +27,12 @@ class Obs:
         s = f"{self.start_time}--{self.end_time}\n"
         s += f"{self.value}\n"
         return s
+
+    def __iter__(self) -> Iterator[int | datetime | float]:
+        yield self.dataset_id
+        yield self.start_time
+        yield self.end_time
+        yield self.value
 
 
 def get_obs(

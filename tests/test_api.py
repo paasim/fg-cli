@@ -88,8 +88,11 @@ def test_get_obs():
     obs = get_obs(dataset_id, max_results=max_results)
     # in practice this might change
     assert len(obs) == max_results
-    assert obs[0].start_time == datetime(2014, 1, 1, tzinfo=UTC)
-    assert obs[0].value == 7676
+    o0 = obs[0]
+
+    assert o0.start_time == datetime(2014, 1, 1, tzinfo=UTC)
+    assert o0.value == 7676
+    assert tuple(o0) == (o0.dataset_id, o0.start_time, o0.end_time, o0.value)
 
 
 def test_get_obs_start_time():
