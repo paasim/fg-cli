@@ -1,6 +1,6 @@
 [project]
 name = "fg_cli"
-version = "0.1.1"
+version = "0.1.2"
 requires-python = ">=3.12"
 dependencies = [ "requests>=2" ]
 
@@ -15,14 +15,15 @@ pythonpath = "."
 line-length = 88
 indent-width = 4
 
-# Assume Python 3.13
-target-version = "py313"
+# Assume Python 3.14
+target-version = "py314"
 
 # All rules: https://beta.ruff.rs/docs/rules/
 [tool.ruff.lint]
 select = ["ALL"]
 ignore = [
   "D",
+  "TC003", # type checking block is not yet considered such a big perf hit
   "ISC001", "COM812", # conflicts with other formatters
   "FBT001", "FBT002", # boolean with default argument is ok
 ]
